@@ -2,7 +2,6 @@
   config,
   pkgs,
   plasma-manager,
-  nixCats,
   ...
 }:
 {
@@ -13,8 +12,6 @@
   nixpkgs = {
     config.allowUnfree = true;
   };
-
-  nixCats.enable = true;
 
   home.file = {
     ".config/autostart/steam.desktop".text = ''
