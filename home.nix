@@ -13,25 +13,17 @@
     config.allowUnfree = true;
   };
 
-  home.file = {
-    ".config/autostart/steam.desktop".text = ''
-      [Desktop Entry]
-      Name=Steam
-      Exec=steam -nochatui -nofriendsui -silent
-      Icon=steam
-      Terminal=false
-      Type=Application
-      Categories=Network;FileTransfer;Game;
-      MimeType=x-scheme-handler/steam;x-scheme-handler/steamlink;
-      Actions=Store;Community;Library;Servers;Screenshots;News;Settings;BigPicture;Friends;
-      PrefersNonDefaultGPU=true
-      X-KDE-RunOnDiscreteGpu=true
+  programs.bash = {
+    enable = true;
+    initExtra = ''
+      if command -v tmux &> /dev/null && [ -z "$TMUX"]; then 
+        tmux attach-session -t main || tmux new-session -s main
+      fi
     '';
   };
 
   home.username = "koeg";
   home.homeDirectory = "/home/koeg";
-  programs.kitty.enable = true;
   programs.home-manager.enable = true;
   home.stateVersion = "24.11";
 
